@@ -11,9 +11,11 @@ const AddTodo = (props) => {
     const [todoData, setTodoData] = useState()
     const { todoId } = useParams()
     const navigate = useNavigate()
+  const url=`${process.env.REACT_APP_API_URL}`
+
 
     const getTodoById = (id) => {
-        axios.get(`http://localhost:3000/api/Todo/getTodoById/${id}`)
+        axios.get(`${url}/Todo/getTodoById/${id}`)
             .then((res) => {
                 setTodoData(res?.data?.data)
             })
@@ -34,7 +36,7 @@ const AddTodo = (props) => {
     }, [todoId, todoData])
 
     function AddTodo(inputData) {
-        axios.post('http://localhost:3000/api/Todo/addTodo', inputData)
+        axios.post(`${url}/Todo/addTodo`, inputData)
             .then(() => {
                 handleAfterSubmit()
             })
@@ -43,7 +45,7 @@ const AddTodo = (props) => {
 
     function UpdateTodo(inputData) {
         if (todoId != null) {
-            axios.put(`http://localhost:3000/api/Todo/updateTodo/${todoId}`, inputData)
+            axios.put(`${url}/Todo/updateTodo/${todoId}`, inputData)
                 .then(() => {
                     handleAfterSubmit()
                     navigate('/dashboard')

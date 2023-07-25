@@ -11,9 +11,10 @@ const Dashboard = () => {
   const userAuth = localStorage.getItem('UserToken')
   const user = jwtDecode(userAuth)
   const [todoList, setTodoList] = useState([])
+  const url=`${process.env.REACT_APP_API_URL}`
 
   const getTodosByUser = () => {
-        axios.get(`http://localhost:3000/api/Todo/getTodoByUserId/${user?._id}`)
+        axios.get(`${url}/Todo/getTodoByUserId/${user?._id}`)
             .then((res) => {
                 setTodoList(res?.data)
             })
