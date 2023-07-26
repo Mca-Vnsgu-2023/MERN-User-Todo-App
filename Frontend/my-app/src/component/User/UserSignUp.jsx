@@ -14,7 +14,7 @@ const UserSignUp = () => {
   const Signup = (inputData) => {
     const {username,email, password}=inputData
     if (username && email && password) {
-      axios.post(`${url}/api/User/register`, inputData)
+      axios.post(`${url}/User/register`, inputData)
         .then(res => {
           alert(res.data.message)
         })

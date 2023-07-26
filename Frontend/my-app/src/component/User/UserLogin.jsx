@@ -14,7 +14,7 @@ const UserLogin = () => {
   const Login = (inputData) => {
     const {email, password}=inputData
     if (email && password) {
-      axios.post(`${url}/api/User/login`, inputData)
+      axios.post(`${url}/User/login`, inputData)
         .then((res) => {
           alert(res.data.message)
           if(res?.data?.token){
