@@ -9,11 +9,12 @@ const UserSignUp = () => {
 
   const navigate=useNavigate()
   const { register, handleSubmit } = useForm();
+  const url=`${process.env.REACT_APP_API_URL}`
 
   const Signup = (inputData) => {
     const {username,email, password}=inputData
     if (username && email && password) {
-      axios.post('http://localhost:3000/api/User/register', inputData)
+      axios.post(`${url}/api/User/register`, inputData)
         .then(res => {
           alert(res.data.message)
         })
